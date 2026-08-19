@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Gift ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ==============================
+   DASAR
+============================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html, body{
+    width:100%;
+    min-height:100vh;
+    font-family:'Poppins', sans-serif;
+    color:white;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.25), transparent 25%),
+        radial-gradient(circle at 80% 80%, rgba(255,100,150,.25), transparent 30%),
+        linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+    background-size:200% 200%;
+    animation:bgMove 12s ease infinite;
+    overflow-x:hidden;
+}
+
+@keyframes bgMove{
+    0%{ background-position:0% 50%; }
+    50%{ background-position:100% 50%; }
+    100%{ background-position:0% 50%; }
+}
+
+
+/* ==============================
+   FLOATING HEART
+============================== */
+
+.hearts{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+}
+
+.heart{
+    position:absolute;
+    bottom:-50px;
+    color:rgba(255,255,255,.65);
+    animation:floatHeart linear infinite;
+}
+
+@keyframes floatHeart{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:0;
+    }
+    20%{ opacity:1; }
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+
+/* ==============================
+   CONTAINER & PAGES CONTROL
+============================== */
+
+.container{
+    position:relative;
+    z-index:2;
+    width:min(1050px,92%);
+    margin:auto;
+    padding:40px 0;
+    text-align:center;
+}
+
+/* Semua page tersembunyi secara default */
+.page {
+    display: none;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* Hanya page aktif yang tampil */
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==============================
+   HEADER / PAGE 1
+============================== */
+
+.badge{
+    display:inline-block;
+    padding:8px 18px;
+    border:1px solid rgba(255,255,255,.4);
+    border-radius:50px;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    font-size:11px;
+    letter-spacing:3px;
+    margin-bottom:20px;
+}
+
+h1{
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(45px,8vw,75px);
+    line-height:1.05;
+    text-shadow: 0 10px 30px rgba(100,20,50,.25);
+}
+
+.subtitle{
+    margin-top:15px;
+    font-size:14px;
+    font-weight:300;
+    opacity:.9;
+}
+
+.gift-area{
+    margin-top:45px;
+}
+
+.gift{
+    font-size:130px;
+    cursor:pointer;
+    display:inline-block;
+    user-select:none;
+    filter:drop-shadow(0 15px 20px rgba(100,20,40,.25));
+    animation:giftMove 2s ease-in-out infinite;
+    transition:.3s;
+}
+
+.gift:hover{
+    transform:scale(1.1) rotate(5deg);
+}
+
+@keyframes giftMove{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-15px); }
+}
+
+
+/* ==============================
+   BUTTON & NAVIGATION
+============================== */
+
+.btn{
+    border:none;
+    padding:14px 30px;
+    margin-top:25px;
+    border-radius:50px;
+    color:white;
+    font-family:'Poppins',sans-serif;
+    font-size:14px;
+    cursor:pointer;
+    background:linear-gradient(135deg, #ff477e, #ff1744);
+    box-shadow: 0 12px 30px rgba(255,23,68,.35);
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow: 0 18px 40px rgba(255,23,68,.45);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.25);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    margin-right: 10px;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,0.4);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+/* ==============================
+   UCAPAN / PAGE 2
+============================== */
+
+.letter{
+    width:min(720px,100%);
+    margin:auto;
+    padding:55px 40px;
+    color:#633d48;
+    background:rgba(255,255,255,.96);
+    border-radius:30px;
+    box-shadow: 0 30px 80px rgba(90,20,45,.25);
+}
+
+.letter-icon{ font-size:48px; margin-bottom:15px; }
+
+.letter-label{
+    color:#d95c7b;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:4px;
+}
+
+.letter h2{
+    margin:18px 0 25px;
+    color:#8d4057;
+    font-family:'DM Serif Display',serif;
+    font-size:45px;
+    line-height:1.2;
+}
+
+.line{
+    width:80px;
+    height:2px;
+    margin:0 auto 30px;
+    background:linear-gradient(90deg, transparent, #e76f91, transparent);
+}
+
+.letter p{
+    color:#76545d;
+    font-size:15px;
+    line-height:2;
+    margin-bottom:18px;
+}
+
+.signature{
+    margin-top:30px;
+    color:#9b5268;
+    font-family:'DM Serif Display',serif;
+    font-size:22px;
+}
+
+.signature strong{
+    display:block;
+    margin-top:5px;
+    font-size:28px;
+}
+
+
+/* ==============================
+   FOTO / PAGE 3
+============================== */
+
+.section-title{
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(38px,6vw,55px);
+    margin-bottom:25px;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns: repeat(5,1fr);
+    gap:18px;
+    align-items:start;
+}
+
+.photo{
+    background:white;
+    padding:8px 8px 14px;
+    border-radius:4px;
+    box-shadow: 0 15px 35px rgba(80,20,40,.25);
+    cursor:pointer;
+    transition:.4s;
+}
+
+.photo:nth-child(odd){ transform:rotate(-2deg); }
+.photo:nth-child(even){ transform:rotate(2deg); }
+
+.photo:hover{
+    transform: rotate(0) translateY(-10px) scale(1.05);
+    z-index:5;
+}
+
+.photo img{
+    display:block;
+    width:100%;
+    height:230px;
+    object-fit:cover;
+}
+
+.photo span{
+    display:block;
+    margin-top:10px;
+    color:#555;
+    font-family:'DM Serif Display',serif;
+    font-size:15px;
+}
+
+
+/* ==============================
+   DOA & HARAPAN / PAGE 4
+============================== */
+
+.prayer{
+    width:min(750px,100%);
+    margin:0 auto;
+    padding:50px 35px;
+    border-radius:30px;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.35);
+    backdrop-filter:blur(15px);
+    box-shadow: 0 25px 60px rgba(80,20,40,.18);
+}
+
+.prayer-icon{ font-size:45px; margin-bottom:15px; }
+
+.prayer h2{
+    font-family:'DM Serif Display',serif;
+    font-size:42px;
+    margin-bottom:25px;
+}
+
+.prayer p{
+    font-size:15px;
+    line-height:2;
+    margin-bottom:18px;
+}
+
+.final{
+    width:min(700px,100%);
+    margin:40px auto 0;
+    padding:45px 30px;
+    border-radius:30px;
+    background:rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.35);
+    backdrop-filter:blur(15px);
+}
+
+.final h2{
+    font-family:'DM Serif Display',serif;
+    font-size:38px;
+    margin-bottom:20px;
+}
+
+.final p{
+    font-size:14px;
+    line-height:2;
+    margin-bottom:15px;
+}
+
+.final h3{
+    margin-top:25px;
+    font-family:'DM Serif Display',serif;
+    font-size:28px;
+}
+
+
+/* ==============================
+   LIGHTBOX FOTO
+============================== */
+
+.lightbox{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    background:rgba(15,5,12,.9);
+    padding:20px;
+}
+
+.lightbox.show{ display:flex; }
+
+.lightbox img{
+    max-width:92vw;
+    max-height:85vh;
+    border-radius:10px;
+    object-fit:contain;
+    box-shadow: 0 30px 80px rgba(0,0,0,.6);
+}
+
+.close{
+    position:absolute;
+    top:20px;
+    right:20px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    color:white;
+    background:rgba(255,255,255,.2);
+    font-size:28px;
+    cursor:pointer;
+}
+
+
+/* ==============================
+   CONFETTI
+============================== */
+
+.confetti{
+    position:fixed;
+    top:-20px;
+    z-index:200;
+    width:8px;
+    height:12px;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform: translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+
+/* ==============================
+   RESPONSIVE MOBILE
+============================== */
+
+@media(max-width:800px){
+    .gallery{ grid-template-columns: repeat(2,1fr); }
+    .photo img{ height:220px; }
+}
+
+@media(max-width:500px){
+    h1{ font-size:45px; }
+    .gift{ font-size:105px; }
+    .letter{ padding:40px 22px; }
+    .letter h2{ font-size:38px; }
+    .letter p{ font-size:14px; }
+    .gallery{ grid-template-columns: 1fr 1fr; gap:15px 10px; }
+    .photo{ padding:6px 6px 12px; }
+    .photo img{ height:190px; }
+    .photo span{ font-size:12px; }
+    .prayer{ padding:40px 22px; }
+    .prayer h2{ font-size:35px; }
+    .prayer p{ font-size:14px; }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- FLOATING HEARTS -->
+<div class="hearts">
+    <span class="heart" style="left:5%;animation-duration:8s;">♥</span>
+    <span class="heart" style="left:15%;animation-duration:11s;">♡</span>
+    <span class="heart" style="left:28%;animation-duration:9s;">♥</span>
+    <span class="heart" style="left:42%;animation-duration:13s;">♡</span>
+    <span class="heart" style="left:55%;animation-duration:10s;">♥</span>
+    <span class="heart" style="left:68%;animation-duration:12s;">♡</span>
+    <span class="heart" style="left:80%;animation-duration:9s;">♥</span>
+    <span class="heart" style="left:92%;animation-duration:11s;">♡</span>
+</div>
+
+
+<div class="container">
+
+    <!-- ==============================================
+         HALAMAN 1: INITIAL / HOME
+    =============================================== -->
+    <div id="page1" class="page active">
+        <div class="badge">A LITTLE SURPRISE FOR YOU ✨</div>
+        <h1>
+            Happy Sweet Seventeen<br>
+            Sayang ❤️
+        </h1>
+        <p class="subtitle">Ada sesuatu yang spesial untukmu...</p>
+
+        <div class="gift-area">
+            <div id="gift" class="gift" onclick="goToPage(2)" title="Klik untuk membuka hadiah">
+                🎁
+            </div>
+            <br>
+            <button class="btn" onclick="goToPage(2)">
+                ✨ Buka Hadiah ✨
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ==============================================
+         HALAMAN 2: SURAT & UCAPAN
+    =============================================== -->
+    <div id="page2" class="page">
+        <div class="letter">
+            <div class="letter-icon">💌</div>
+            <div class="letter-label">A LITTLE LETTER FOR YOU</div>
+            <h2>Untuk Kamu,<br>my honey ❤️</h2>
+            <div class="line"></div>
+
+            <p>Selamat ulang tahun, my honey.</p>
+            <p>
+                cieee hari ini ulang tahun, panjangg umurr yaaa ssayangggg
+                semogaaa apaa yang kamu harap bisa kecapaiii
+                SEMOGAA BISAA MASUKKK UGM AAMIIN  
+            </p>
+            <p>
+                semoga di umur kamu yang NAMBAH ini bisaa jadi lebik baik lagii,
+                bisaa bikin bangga orang tua (elih & njunn bapaaa),
+                jadi penyabar buat aku samaa dede dede kamuu hehe
+            </p>
+            <p>semoga apa yang kamu semogakann bisa tercapai amiin</p>
+
+            <div class="signature">
+                With all my love,
+                <strong>❤️ pangeran charless</strong>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-secondary" onclick="goToPage(1)">⬅️ Kembali</button>
+                <button class="btn" onclick="goToPage(3)">📸 Lets see the picture</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==============================================
+         HALAMAN 3: FOTO KENANGAN
+    =============================================== -->
+    <div id="page3" class="page">
+        <h2 class="section-title">Our Little Memories 📸</h2>
+
+        <div class="gallery">
+            <div class="photo" data-photo="gift.jpeg">
+                <img src="gift.jpeg" alt="Kenangan pertama">
+                <span>happy❤️</span>
+            </div>  
+            <div class="photo" data-photo="gift2.jpeg">
+                <img src="gift2.jpeg" alt="Kenangan kedua">
+                <span>sweet seventeen❤️</span>
+            </div>  
+            <div class="photo" data-photo="gift9.jpeg">
+                <img src="gift9.jpeg" alt="Kenangan ketiga">
+                <span>sayangku❤️</span>
+            </div>  
+            <div class="photo" data-photo="gift5.jpeg">
+                <img src="gift5.jpeg" alt="Kenangan keempat">
+                <span>cintaku❤️</span>
+            </div>  
+            <div class="photo" data-photo="gift6.jpeg">
+                <img src="gift6.jpeg" alt="Kenangan kelima">
+                <span>loveeeee uuuuuuu❤️</span>
+            </div>  
+        </div>
+
+        <div class="nav-buttons" style="margin-top: 40px;">
+            <button class="btn btn-secondary" onclick="goToPage(2)">⬅️ Kembali</button>
+            <button class="btn" onclick="goToPage(4)">🎀 Ada doa buat kamu</button>
+        </div>
+    </div>
+
+
+    <!-- ==============================================
+         HALAMAN 4: DOA & HARAPAN
+    =============================================== -->
+    <div id="page4" class="page">
+        <div class="prayer">
+            <div class="prayer-icon">🙏✨</div>
+            <h2>doa & harapan buat kamu</h2>
+            <p>
+                Semoga di umurmu yang baru,
+                semua langkahmu dimudahkan,
+                rezekimu dilancarkan,
+                kesehatanmu dijaga,
+                dan hatimu selalu diberikan kesabaran.
+            </p>
+            <p>
+                Semoga apa yang di impikan bisa kecapai
+                dan bisa masukk kampus impiannn 
+            </p>
+            <p>
+                Semoga semua doa yang kamu panjatkan dalam diam,
+                semua harapan yang kamu simpan,
+                dan semua keinginan yang kamu perjuangkan dapat menemukan
+                waktunya untuk menjadi nyata.
+            </p>
+        </div>
+
+        <div class="final">
+            <h2>❤️ last ❤️</h2>
+            <p>tetap menjadi warna pada setiap cerita yang tulis.</p>
+            <h3>I LOVE 3000❤️</h3>
+        </div>
+
+        <div class="nav-buttons" style="margin-top: 30px;">
+            <button class="btn btn-secondary" onclick="goToPage(3)">⬅️ Kembali</button>
+            <button class="btn" onclick="goToPage(1)">🔄 Ulangi Dari Awal</button>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox">
+    <button id="closeButton" class="close">×</button>
+    <img id="lightboxImage" src="" alt="Foto">
+</div>
+
+
+<script>
+
+/* =====================================================
+   NAVIGASI HALAMAN
+===================================================== */
+
+function goToPage(pageNumber) {
+    // Sembunyikan semua halaman
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        page.classList.remove('active');
+    });
+
+    // Tampilkan halaman tujuan
+    const targetPage = document.getElementById('page' + pageNumber);
+    if (targetPage) {
+        targetPage.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Jalankan efek confetti pada halaman tertentu
+    if (pageNumber > 1) {
+        createConfetti();
+    }
+}
+
+
+/* =====================================================
+   FOTO FULLSCREEN (LIGHTBOX)
+===================================================== */
+
+const photos = document.querySelectorAll(".photo");
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.getElementById("lightboxImage");
+const closeButton = document.getElementById("closeButton");
+
+photos.forEach(function(photo){
+    photo.addEventListener("click", function(){
+        const src = photo.getAttribute("data-photo");
+        lightboxImage.src = src;
+        lightbox.classList.add("show");
+        document.body.style.overflow = "hidden";
+    });
+});
+
+function closePhoto(){
+    lightbox.classList.remove("show");
+    document.body.style.overflow = "auto";
+}
+
+closeButton.addEventListener("click", closePhoto);
+
+lightbox.addEventListener("click", function(event){
+    if(event.target === lightbox){
+        closePhoto();
+    }
+});
+
+document.addEventListener("keydown", function(event){
+    if(event.key === "Escape"){
+        closePhoto();
+    }
+});
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function createConfetti(){
+    const colors = ["#ff477e", "#ff9a9e", "#ffffff", "#ffd166", "#fbc2eb", "#ff6f91"];
+
+    for(let i = 0; i < 60; i++){
+        const item = document.createElement("div");
+        item.className = "confetti";
+        item.style.left = Math.random() * 100 + "vw";
+        item.style.background = colors[Math.floor(Math.random() * colors.length)];
+        item.style.animationDuration = (Math.random() * 2 + 2) + "s";
+        item.style.animationDelay = (Math.random() * .5) + "s";
+
+        document.body.appendChild(item);
+
+        setTimeout(function(){
+            item.remove();
+        }, 4500);
+    }
+}
+
+</script>
+
+</body>
+</html>
